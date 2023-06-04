@@ -2,8 +2,6 @@ package com.example.uk.repository;
 
 import com.example.uk.constant.ItemSellStatus;
 import com.example.uk.entity.Item;
-//import com.example.uk.entity.QItem;
-//import com.querydsl.core.BooleanBuilder;
 //import com.querydsl.jpa.impl.JPAQuery;
 //import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -12,16 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.TestPropertySource;
-import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -146,7 +138,7 @@ class ItemRepositoryTest {
 //            System.out.println(item.toString());
 //        }
 //    }
-//
+
 //    @Test
 //    @DisplayName("Querydsl 조회 테스트2")
 //    public void queryDslTest2() {
