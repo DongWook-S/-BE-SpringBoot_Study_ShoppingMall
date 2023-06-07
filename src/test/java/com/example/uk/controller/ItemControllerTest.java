@@ -25,9 +25,9 @@ class ItemControllerTest {
     @DisplayName("상품 등록 페이지 권한 테스트")
     @WithMockUser(username = "admin", roles = "ADMIN")
     public void itemFormTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))  // 상품 등록 페이지에 요청을 GET 요청을 보냄
-                .andDo(print()) // 요청과 응답 메시지를 확인할 수 있도록 콘솔창에 출력
-                .andExpect(status().isOk());    // 응답 상태 코드가 정상인지 확인
+        mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))    // 상품 등록 페이지에 요청을 GET 요청을 보냄
+                .andDo(print())                                                     // 요청과 응답 메시지를 확인할 수 있도록 콘솔창에 출력
+                .andExpect(status().isOk());                                        // 응답 상태 코드가 정상인지 확인
     }
 
     @Test
@@ -36,6 +36,6 @@ class ItemControllerTest {
     public void itemFormNotAdminTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))
                 .andDo(print())
-                .andExpect(status().isForbidden()); // 상품 등록 페이지 진입 요청 시 Forbidden 예외가 발생하면 테스트 성공
+                .andExpect(status().isForbidden());                                 // 상품 등록 페이지 진입 요청 시 Forbidden 예외가 발생하면 테스트 성공
     }
 }
