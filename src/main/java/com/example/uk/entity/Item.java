@@ -18,33 +18,25 @@ public class Item {
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    // 상품코드
-    private Long id;
+    private Long id;                        // 상품코드
 
     @Column(nullable = false, length = 50)
-    // 상품명
-    private String itemNm;
+    private String itemNm;                  // 상품명
 
     @Column(name = "price", nullable = false)
-    // 가격
-    private int price;
+    private int price;                      // 가격
 
     @Column(nullable = false)
-    // 재고수량
-    private int stockNumber;
+    private int stockNumber;                // 재고수량
 
     @Lob
     @Column(nullable = false)
-    // 상품 상세 설명
-    private String itemDetail;
+    private String itemDetail;              // 상품 상세 설명
 
     @Enumerated(EnumType.STRING)
-    // 상품 판매 상태
-    private ItemSellStatus itemSellStatus;
+    private ItemSellStatus itemSellStatus;  // 상품 판매 상태
 
-    // 등록 시간
-    private LocalDateTime regTime;
+    private LocalDateTime regTime;          // 등록 시간
 
-    // 수정 시간
-    private LocalDateTime updateTime;
+    private LocalDateTime updateTime;       // 수정 시간
 }
