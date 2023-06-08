@@ -27,7 +27,8 @@ public class ItemController {
     }
 
     @PostMapping(value = "/admin/item/new")
-    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
+    public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
+                          Model model, @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList){
 
         if (bindingResult.hasErrors()) {
             return "item/itemForm";
@@ -40,7 +41,7 @@ public class ItemController {
 
         try {
             itemService.saveItem(itemFormDto, itemImgFileList);
-        } catch (Exception e) {
+        } catch (Exception e){
             model.addAttribute("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
             return "item/itemForm";
         }
