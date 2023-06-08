@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @Table(name = "orders") // 정렬할 때 사용하는 'order' 키워드가 있기 때문에 orders 로 지정
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -35,7 +35,7 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
+//    private LocalDateTime regTime;
+//
+//    private LocalDateTime updateTime;
 }
