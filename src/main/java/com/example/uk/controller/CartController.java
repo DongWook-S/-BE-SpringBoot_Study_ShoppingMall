@@ -1,5 +1,6 @@
 package com.example.uk.controller;
 
+import com.example.uk.dto.CartDetailDto;
 import com.example.uk.dto.CartItemDto;
 import com.example.uk.service.CartService;
 import jakarta.validation.Valid;
@@ -7,8 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,5 +53,13 @@ public class CartController {
 
         // 결과값으로 생성된 장바구니 상품 아이디와 요청이 성공 하였다는 HTTP 응답 상태 코드를 반환
         return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/cart")
+    public String orderHist(Principal principal, Model model) {
+        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
+        model.addAttribute("cartItems", cartDetailList);
+
+        return "cart/cartList";
     }
 }
