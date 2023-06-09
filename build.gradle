@@ -81,5 +81,8 @@ compileQuerydsl {
  * Gradle -> Tasks -> build -> clean
  * 재시도
  * Gradle -> Tasks -> other -> compileQuerydsl 한 번 더.
- * 오류 날 경우 https://lahezy.tistory.com/94 참고(intelliJ->setting -> build tools -> gradle : gradle -> intelliJ 로 변경하니깐 잘댐)
+ * 1. 오류 날 경우 https://lahezy.tistory.com/94 참고
+ * 2. intelliJ -> setting -> build tools -> gradle : gradle -> intelliJ 로 변경
+ * 3. Gradle -> Tasks -> build -> clean 후 프로젝트 실행시켜도 댐
+ *
  */

@@ -3,6 +3,7 @@ package com.example.uk.service;
 import com.example.uk.dto.ItemFormDto;
 import com.example.uk.dto.ItemImgDto;
 import com.example.uk.dto.ItemSearchDto;
+import com.example.uk.dto.MainItemDto;
 import com.example.uk.entity.Item;
 import com.example.uk.entity.ItemImg;
 import com.example.uk.repository.ItemImgRepository;
@@ -28,20 +29,21 @@ public class ItemService {
 
     private final ItemImgRepository itemImgRepository;
 
-    public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
+    public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
 
         //상품 등록
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
 
         //이미지 등록
-        for (int i = 0; i < itemImgFileList.size(); i++){
+        for (int i = 0; i < itemImgFileList.size(); i++) {
             ItemImg itemImg = new ItemImg();
             itemImg.setItem(item);
 
             if (i == 0) {
                 itemImg.setRepimgYn("Y");
-            } else {
+            }
+            else {
                 itemImg.setRepimgYn("N");
             }
 
@@ -93,5 +95,10 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 }
